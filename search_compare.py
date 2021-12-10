@@ -1,34 +1,37 @@
-import argparse
-# other imports go here
-
-import random
-
-def get_me_random_list(n):
-    """Generate list of n elements in random order
-    
-    :params: n: Number of elements in the list
-    :returns: A list with n elements in random order
-    """
-    a_list = list(range(n))
-    random.shuffle(a_list)
-    return a_list
-    
-def sequential_search(a_list,item):
-    pass
-
-
-def ordered_sequential_search(a_list,item):
-    pass
-
-
-def binary_search_iterative(a_list,item):
-    pass
-    
-    
-def binary_search_recursive(a_list,item):
-    pass
-
-
-if __name__ == "__main__":
-    """Main entry point"""
-    pass
+﻿import time 
+import random 
+def insertionSort(array):
+     for step in range(1, len(array)): 
+         key = array[step] 
+         j = step - 1
+         while j >= 0 and key < array[j]: 
+             array[j + 1] = array[j] 
+             j = j - 1 
+             array[j + 1] = key 
+def shellSort(array, n): 
+     interval = n // 2 
+     while interval > 0: 
+        for i in range(interval, n):
+             temp = array[i] 
+             j = i 
+             while j >= interval and array[j - interval] > temp: 
+                  array[j] = array[j - interval] 
+                  j -= interval
+                  array[j] = temp 
+        interval //= 2 
+main_list=[] 
+for i in range(100): 
+    main_list.append(random.sample(range(1,1000),500)) 
+    for arr in main_list: 
+         begin = time.time() 
+         insertionSort(arr)
+         end = time.time()
+         print(f"Total runtime of the insertiion sort is {end - begin}") 
+         begin = time.time()
+         shellSort(arr,10) 
+         end = time.time()
+         print(f"Total runtime of the shell sort is {end - begin}")
+         begin = time.time()
+         arr.sort()
+         end = time.time()
+         print(f"Total runtime of the python sort is {end - begin}")
